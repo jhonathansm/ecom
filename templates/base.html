@@ -27,6 +27,18 @@
                     <li class="nav-item">
                         <a href="{% url 'pages:about' %}" class="nav-link lead mr-4 font-weight-bold">Sobre Nós</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_logout' %}">Sair</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_login' %}">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_signup' %}">Cadastro</a>
+                    </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a href="{% url 'cart:detail' %}" class="nav-link lead mr-4 font-weight-bold"><i class="fas fa-shopping-cart"></i></a>
                     </li>
