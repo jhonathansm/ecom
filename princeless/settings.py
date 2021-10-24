@@ -47,11 +47,13 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "crispy_forms",
+    "localflavor",
     ## meu app
     "users.apps.UsersConfig",
     "pages.apps.PagesConfig",
     "products.apps.ProductsConfig",
     "cart.apps.CartConfig",
+    "orders.apps.OrdersConfig"
 ]
 
 MIDDLEWARE = [
