@@ -12,6 +12,12 @@
             </ul>
         </div>
         <div class="col-lg-9">
+            {% if query %}
+            <div class='col 12'>
+                Resultado para <b>{{ query }}</b>
+                <hr />
+            </div>
+            {% endif %}
             <div class="card-deck mb-3">
                 {% for product in product_list %}
                 <div class="card" style="width: 18rem; display:grid;">

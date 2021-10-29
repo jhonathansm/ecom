@@ -1,0 +1,37 @@
+{% load static %} {% load product_tags %}
+<div class="col-lg-9">
+    <div class="card-deck mb-3">
+        {% for product in product_list %}
+        <div class="card" style="width: 18rem; display:grid;">
+            {% if product.image %}
+            <a href="{{ product.get_absolute_url }}">
+                <img class="card-img-top" style="height: 250px;" src="/media/{{product.image}}" alt=""> {% else %}
+                <img class="card-img-top" src="{% static 'images/no_image.jpg' %}" alt="">
+            </a>
+            {% endif %}
+            <div class="card-body">
+
+                <h5 class="card-title">{{ product.name }}</h5>
+
+                <a class="text-decoration-none text-dark" href="{{ product.get_absolute_url }}">
+                    <p class="font-weight-bold">R$ {{ product.price }}</p>
+                </a>
+                <form class="form-group" action="{% url 'cart:addcart' product.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-success" type="submit" style="display: flex;"><i class="fas fa-cart-plus"></i></button>
+                </form>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:"3" and not forloop.last %}
+    </div>
+    <div class="card-deck mb-3">
+        {% endif %} {% endfor %} {% if product_list|length|remainder == 2 %}
+        <div class="card border-0"></div>
+        {% elif product_list|length|remainder == 1 %}
+        <div class="card border-0"></div>
+        <div class="card border-0"></div>
+        {% endif %}
+    </div>
+
+    {% if is_paginated %} {% include "pagination.html" with page=page_obj %} {% endif %}
+</div>
