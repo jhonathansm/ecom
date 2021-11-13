@@ -7,11 +7,11 @@ from model_utils.models import TimeStampedModel
 
 class ProductQuerySet(models.query.QuerySet):
     
-    def active(self):
-        return self.filter(active = True)
+    # def active(self):
+    #     return self.filter(active = True)
 
-    def featured(self):
-        return self.filter(featured = True, active = True)
+    # def featured(self):
+    #     return self.filter(featured = True, active = True)
 
     def search(self, query):
         lookups = (Q(description = query) | 
@@ -24,8 +24,8 @@ class ProductManager(models.Manager):
     def get_queryset(self):
         return ProductQuerySet(self.model, using = self._db)
     
-    def all(self):
-        return self.get_queryset().active()
+    # def all(self):
+    #     return self.get_queryset().active()
 
     def featured(self):
         #self.get_queryset().filter(featured = True)
