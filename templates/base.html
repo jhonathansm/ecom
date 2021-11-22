@@ -29,7 +29,14 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_logout' %}">Sair</a>
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle nav-link lead mr-4 font-weight-bold" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                          {{user.username}}
+                        </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="nav-link lead mr-4 font-weight-bold" href="{% url 'account_logout' %}">Sair</a>
+                            </div>
+                        </div>
                     </li>
                     {% else %}
                     <li class="nav-item">
