@@ -3,5 +3,6 @@
 <form method="post" style="width: 500px; margin: 0 auto;">
     {% csrf_token %} {{ form|crispy }}
     <button class="btn btn-success" type="submit">Entrar</button>
+    <a class="button secondaryAction" href="{% url 'account_reset_password' %}">Esqueceu Senha?</a>
 </form>
 {% endblock %}
